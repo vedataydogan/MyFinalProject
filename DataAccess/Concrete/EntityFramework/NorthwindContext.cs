@@ -46,5 +46,6 @@ namespace DataAccess.Concrete.EntityFramework
         public DbSet<Category> Categories { get; set; }
         public DbSet<Customer> Customers { get; set; }
         //Artık biz EntityFrameworkCore kullanarak Ürünlerle, Categorilerle ve Müşterilerle ilgili kodlarımızı yazabiliriz.
+        public DbSet<Order> Orders { get; set; }
     }
 }
