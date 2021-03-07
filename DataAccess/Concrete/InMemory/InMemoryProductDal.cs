@@ -1,5 +1,6 @@
 ﻿using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -95,6 +96,11 @@ namespace DataAccess.Concrete.InMemory
 
             //LINQ ile
             return _products.Where(p => p.CategoryId == categoryId).ToList();
+        }
+
+        public List<ProductDetailDto> GetProductDetails()
+        {
+            throw new NotImplementedException();
         }
 
         //Güncellemeye gelelim. Güncellemede de aynı. Sonuç olarak hepsi referans tipi iyi bilmekle alakalı. Benim yine güncellenecek referansı bulmam lazım.

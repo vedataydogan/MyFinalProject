@@ -9,7 +9,12 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
-            //ProductTest();
+            ProductTest();
+            //CategoryTest();
+        }
+
+        private static void CategoryTest()
+        {
             CategoryManager categoryManager = new CategoryManager(new EfCategoryDal());
             foreach (var category in categoryManager.GetAll())
             {
@@ -24,10 +29,25 @@ namespace ConsoleUI
             //tutabildiği için biz şimdilik InMemoryProductDal class ını new leyebiliriz. Şu an bu şu demek ben InMemory çalışacam demek.
             ProductManager productManager = new ProductManager(new EfProductDal());
             //Business a diyorki bana tüm ürünleri ver diyo.
-            foreach (var product in productManager.GetByUnitPrice(40, 100))
+            //foreach (var product in productManager.GetByUnitPrice(40, 100))
+            //{
+            //    Console.WriteLine(product.ProductName);
+            //}
+
+            var result = productManager.GetProductDetails();
+
+            if (result.Success == true)
             {
-                Console.WriteLine(product.ProductName);
+                foreach (var productDetail in result.Data)
+                {
+                    Console.WriteLine(productDetail.ProductName + "/" + productDetail.CategoryName);
+                }
             }
+            else
+            {
+                Console.WriteLine(result.Message);
+            }
+            
         }
     }
 }
